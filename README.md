@@ -83,7 +83,7 @@ let router = Router { route in
 try Server(responder: router).start()
 ```
 
-This will create an HTTP server and router and route `/hello` to a responder that will respond with `"hello"`.
+This will create an HTTP server and router which will route `/hello` to a responder that responds with `"hello"`.
 
 Now let's build the app.
 
