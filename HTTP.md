@@ -254,7 +254,7 @@ let request = Request(method: .GET, uri: "/") { response, stream in
 }
 ```
 
-> **Warning**: Don't confuse the *body* stream with the *transport* stream. The *body* stream is used to send/receive binary data in the HTTP message body. While *transport* stream is the raw stream of binary data sent/received from the client and server. After you upgrade you can use the *transport* stream to communicate in any other protocol you want.
+> **Warning**: Don't confuse the *body* stream with the *transport* stream. The *body* stream is used to send/receive binary data in the HTTP message body. *Transport* stream is the raw stream of binary data sent/received from the client and server. After you upgrade you can use the *transport* stream to communicate in any other protocol you want.
 
 ## Response
 
