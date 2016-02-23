@@ -41,7 +41,7 @@ mkdir myapp && cd myapp
 Then we initialize the project with Swift Package Manager (SPM).
 
 ```sh
-swift build —-init
+swift build --init
 ```
 
 This command will create the basic structure for our app.
