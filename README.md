@@ -12,10 +12,14 @@ Before we start we need to install the approriate **Swift** binaries and **Zewo*
 
 #### OS X
 
+Download and install Xcode 7.3 or greater.
+
+- [Xcode Download](https://developer.apple.com/xcode/download/)
+
 Download the Swift Development Snapshot and optionally the Debugging Symbols.
 
 - [Swift Development Snapshot](https://swift.org/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a-osx.pkg)
-- [Debugging Symbols](https://swift.org/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a-osx-symbols.pkg)
+- [Debugging Symbols (Optional)](https://swift.org/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a-osx-symbols.pkg)
 
 After installing add the swift toolchain to your path.
 
@@ -43,7 +47,7 @@ Download the Swift Development Snapshot
 
  - [Swift Development Snapshot](https://swift.org/builds/development/ubuntu1404/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a-ubuntu14.04.tar.gz)
 
-After the download extract the archive.
+After the download extract the archive. This creates a `usr/` directory in the location of the archive.
 
 ```sh
 tar xzf swift-<VERSION>-<PLATFORM>.tar.gz
@@ -154,7 +158,7 @@ After it compiles, run it.
 .build/debug/hello
 ```
 
-Now open your favorite browser and go to `localhost:8080/hello`. You should see `hello world` in your browser's window.
+Now open your favorite browser and go to `localhost:8080/hello`. You should see `hello world` in your browser's window 😊.
 
 ## Using Xcode for development
 
