@@ -57,6 +57,8 @@ export PATH=/path/to/usr/bin:"${PATH}"
 
 ### Install Zewo
 
+After installing Swift we need to install Zewo's dependencies.
+
 #### OS X
 ```sh
 brew tap zewo/tap
@@ -83,7 +85,7 @@ To showcase what **Zewo** can do we'll create a hello world web app.
 
 ### Configure your project
 
-First we need to create a directory for your app.
+First we need to create a directory for our app.
 
 ```sh
 mkdir hello && cd hello
@@ -154,3 +156,53 @@ After it compiles, run it.
 
 Now open your favorite browser and go to `localhost:8080/hello`. You should see `hello world` in your browser's window.
 
+## Using Xcode for development
+
+Using Xcode for development can dramatically improve your productivity. For this reason we developed a tool called [zewo-dev](https://github.com/Zewo/zewo-dev) to helps us.
+
+### Create Xcode project
+
+First, let's configure an Xcode project for you app. Create a directory for Xcode in your app's root directory.
+
+```sh
+mkdir Xcode && cd Xcode
+```
+ 
+Install [Alcatraz](https://github.com/supermarin/Alcatraz) if you haven't already.
+
+```sh
+curl -fsSL https://raw.github.com/alcatraz/Alcatraz/master/Scripts/install.sh | sh
+```
+
+Look for **Swift Command Line Application** under Templates in Alcatraz and install it. Restart Xcode and go to `File > New > Projects` and choose **Swift Command Line Application**. Save it on the `Xcode` directory you just created.
+
+Remove the `main.swift` file that was generated and add the `Sources` directory from your app's root directory.
+
+### Install zewo-dev
+
+This tool will clone all repos from Zewo and generate Xcode projects for them.
+
+```sh
+gem install zewo-dev
+```
+
+
+Inside the Xcode directory create a directory for Zewo's Xcode projects.
+
+```sh
+mkdir Zewo && cd Zewo
+```
+
+Pull the repos and generate Xcode projects.
+
+```sh
+zewodev init && zewodev make_projects
+```
+
+### Add Zewo subprojects
+
+With your app's Xcode project opened, drag and drop the required Xcode projects from Zewo to your project. In our example we should bring `HTTPServer.xcodeproj` and `Router.xcodeproj`.
+
+Go to your app's target `Build Phases > Target Dependencies` and select `HTTPServer` and `Router` frameworks.
+
+Now build and run as usual. After this you can open your favorite browser and go to `localhost:8080/hello`. You should see `hello world` again, but now running from Xcode 😎.
