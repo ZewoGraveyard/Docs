@@ -160,7 +160,7 @@ Now open your favorite browser and go to `localhost:8080/hello`. You should see 
 
 Using Xcode for development can dramatically improve your productivity. For this reason we developed a tool called [zewo-dev](https://github.com/Zewo/zewo-dev) to helps us.
 
-### Create Xcode project
+### Create App's Xcode project
 
 First, let's configure an Xcode project for you app. Create a directory for Xcode in your app's root directory.
 
@@ -203,6 +203,6 @@ zewodev init && zewodev make_projects
 
 With your app's Xcode project opened, drag and drop the required Xcode projects from Zewo to your project. In our example we should bring `HTTPServer.xcodeproj` and `Router.xcodeproj`.
 
-Go to your app's target `Build Phases > Target Dependencies` and select `HTTPServer` and `Router` frameworks.
+Go to your app's target `Build Phases > Target Dependencies` and add `HTTPServer` and `Router` frameworks.
 
 Now build and run as usual. After this you can open your favorite browser and go to `localhost:8080/hello`. You should see `hello world` again, but now running from Xcode 😎.
