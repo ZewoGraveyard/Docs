@@ -4,7 +4,7 @@
 
 ## Installation
 
-Before we start we need to install the approriate **Swift** binaries and **Zewo** dependencies.
+Before we start we need to install the appropriate **Swift** binaries and **Zewo** dependencies.
 
 ### Install Swift
 
@@ -31,7 +31,7 @@ If you're using **Xcode** you can choose the appropriate toolchain from `Prefere
  
 #### Linux 
  
-On linux you have to install swift dependencies.
+On Linux you have to install swift dependencies.
 
 ```sh
 sudo apt-get install clang libicu-dev
@@ -158,7 +158,7 @@ After it compiles, run it.
 .build/debug/hello
 ```
 
-Now open your favorite browser and go to `localhost:8080/hello`. You should see `hello world` in your browser's window 😊.
+Now open your favorite browser and go to `localhost:8080/hello`. You should see `hello world` in your browser's window. 😊
 
 ## Using Xcode for development
 
@@ -209,4 +209,4 @@ With your app's Xcode project opened, drag and drop the required Xcode projects 
 
 Go to your app's target `Build Phases > Target Dependencies` and add `HTTPServer` and `Router` frameworks.
 
-Now build and run as usual. After this you can open your favorite browser and go to `localhost:8080/hello`. You should see `hello world` again, but now running from Xcode 😎.
+Now build and run as usual. After this you can open your favorite browser and go to `localhost:8080/hello`. You should see `hello world` again, but now running from Xcode. 😎
