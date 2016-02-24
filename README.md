@@ -1,18 +1,69 @@
 # Getting started
 
-**Zewo** is *not* a web framework, it's much more. **Zewo** is a set of libraries aimed at server side development. With **Zewo** you can write your web app, REST API, command line tool, etc. Although we already provide enough you could, for example, develop your own opinionated higher-level web framework on top of zewo modules.
+**Zewo** is a set of libraries aimed at server side development. With **Zewo** you can write your web app, REST API, command line tool, etc. Although we already provide enough you could, for example, develop your own opinionated higher-level web framework on top of zewo modules.
 
 ## Installation
 
-Before we start we need to install **Zewo**.
+Before we start we need to install the approriate Swift binaries.
 
-### OS X
+### Install Swift
+
+ **Zewo 0.2** is compatible with February 8, 2016 Swift Development Snapshot.
+
+#### OS X
+
+Download the Swift Development Snapshot and optionally the Debugging Symbols.
+
+- [Swift Development Snapshot](https://swift.org/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a-osx.pkg)
+- [Debugging Symbols](https://swift.org/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a-osx-symbols.pkg)
+
+After installing add the swift toolchain to your path.
+
+```sh
+export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:"${PATH}"
+```
+
+If you're using **Xcode** you can choose the appropriate toolchain from `Preferences > Componentes > Toolchains`. 
+ 
+#### Linux 
+ 
+On linux you have to install swift dependencies.
+
+```sh
+sudo apt-get install clang libicu-dev
+``` 
+
+Download the Swift Development Snapshot
+ 
+##### Ubuntu 15.10
+
+- [Swift Development Snapshot](https://swift.org/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a-ubuntu15.10.tar.gz)
+
+##### Ubuntu 14.04
+
+ - [Swift Development Snapshot](https://swift.org/builds/development/ubuntu1404/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a-ubuntu14.04.tar.gz)
+
+After the download extract the archive.
+
+```sh
+tar xzf swift-<VERSION>-<PLATFORM>.tar.gz
+```
+
+Add the Swift toolchain to your path.
+
+```sh
+export PATH=/path/to/usr/bin:"${PATH}"
+```
+
+### Install Zewo
+
+#### OS X
 ```sh
 brew tap zewo/tap
 brew install zewo
 ```
 
-### Linux
+#### Linux
 ```sh
 echo "deb [trusted=yes] http://apt.zewo.io/deb ./" | sudo tee --append /etc/apt/sources.list
 sudo apt-get update
@@ -26,23 +77,11 @@ This will install our current dependencies:
 - [uri_parser](https://github.com/Zewo/uri_parser)
 - [openssl](https://www.openssl.org/)
 
-**Zewo 0.2** is compatible with February 8, 2016 Swift Development Snapshot.
-
-- OS X
- - [Swift Development Snapshot](https://swift.org/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a-osx.pkg)
- - [Debugging Symbols](https://swift.org/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a-osx-symbols.pkg)
-- Ubuntu 15.10
- - [Swift Development Snapshot](https://swift.org/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a-ubuntu15.10.tar.gz)
- - [Signature](https://swift.org/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a-ubuntu15.10.tar.gz.sig)
-- Ubuntu 14.04
- - [Swift Development Snapshot](https://swift.org/builds/development/ubuntu1404/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a-ubuntu14.04.tar.gz)
- - [Signature](https://swift.org/builds/development/ubuntu1404/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a-ubuntu14.04.tar.gz.sig) 
-
 ## Hello World Web App
 
 To showcase what **Zewo** can do we'll create a hello world web app.
 
-### Configuring your project
+### Configure your project
 
 First we need to create a directory for your app.
 
@@ -80,7 +119,9 @@ let package = Package(
 )
 ```
 
-Now open `main.swift` and make it look like this:
+### Do your magic
+
+Open `main.swift` and make it look like this:
 
 ```swift
 import HTTPServer
@@ -88,14 +129,16 @@ import Router
 
 let router = Router { route in
     route.get("/hello") { _ in
-        return Response(body: "hello")
+        return Response(body: "hello world")
     }
 }
 
 try Server(responder: router).start()
 ```
 
-This will create an HTTP server and router which will route `/hello` to a responder that responds with `"hello"`.
+This will create an HTTP server and router which will route `/hello` to a responder that responds with `"hello world"`.
+
+### Build and run
 
 Now let's build the app.
 
@@ -103,11 +146,11 @@ Now let's build the app.
 swift build
 ```
 
-After it compiles let's run it.
+After it compiles, run it.
 
 ```sh
 .build/debug/hello
 ```
 
-Now open your favorite browser and go to `localhost:8080/hello`. You should see the word `hello` in your browser's window.
+Now open your favorite browser and go to `localhost:8080/hello`. You should see `hello world` in your browser's window.
 
