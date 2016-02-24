@@ -8,7 +8,7 @@ Before we start we need to install the approriate **Swift** binaries and **Zewo*
 
 ### Install Swift
 
- **Zewo 0.2** is compatible with February 8, 2016 Swift Development Snapshot.
+ **Zewo 0.2** requires February 8, 2016 Swift Development Snapshot.
 
 #### OS X
 
