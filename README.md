@@ -63,6 +63,53 @@ wget https://raw.github.com/Zewo/Zewo/master/Scripts/install-zewo0.2.3-ubuntu15.
 wget https://raw.github.com/Zewo/Zewo/master/Scripts/install-zewo0.2.3-ubuntu14.04.sh -O - | sh
 ```
 
+If you prefer to install everything manually.
+
+### Install Swift
+
+Install swift dependencies.
+
+```sh
+sudo apt-get install clang libicu-dev
+```
+
+Download the Swift Development Snapshot
+
+#### Ubuntu 15.10
+
+- [Swift Development Snapshot](https://swift.org/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a-ubuntu15.10.tar.gz)
+
+#### Ubuntu 14.04
+
+ - [Swift Development Snapshot](https://swift.org/builds/development/ubuntu1404/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a-ubuntu14.04.tar.gz)
+
+Extract the archive. This creates a `usr` directory in the location of the archive.
+
+```sh
+tar xzf swift-<VERSION>-<PLATFORM>.tar.gz
+```
+
+Add the Swift toolchain to your path.
+
+```sh
+export PATH=/path/to/usr/bin:"${PATH}"
+```
+
+#### Install Zewo
+
+```sh
+echo "deb [trusted=yes] http://apt.zewo.io/deb ./" | sudo tee --append /etc/apt/sources.list
+sudo apt-get update
+sudo apt-get install zewo
+```
+
+This will install our current dependencies:
+
+- [libvenice](https://github.com/Zewo/libvenice)
+- [http_parser](https://github.com/Zewo/http_parser)
+- [uri_parser](https://github.com/Zewo/uri_parser)
+- [openssl](https://www.openssl.org/)
+
 ## Hello World Web App
 
 To showcase what **Zewo** can do we'll create a hello world web app.
