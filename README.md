@@ -178,7 +178,7 @@ This code:
 
 - Creates an HTTP server that listens on port `8080` by default.
 - Configures a router which will route `/hello` to a responder that responds with `"hello world"`.
-- Mounts a middleware on the server that will log every request/response pair to the standard error stream (stderr) by default.
+- Mounts a logger middleware on the server that will log every request/response pair to the standard error stream (stderr) by default.
 
 ### Build and run
 
