@@ -63,7 +63,7 @@ wget https://raw.github.com/Zewo/Zewo/master/Scripts/install-zewo0.2.3-ubuntu15.
 wget https://raw.github.com/Zewo/Zewo/master/Scripts/install-zewo0.2.3-ubuntu14.04.sh -O - | sh
 ```
 
-If could also install everything manually.
+You can also install everything manually.
 
 ### Install Swift
 
