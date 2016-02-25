@@ -6,75 +6,38 @@
 
 Before we start we need to install the appropriate **Swift** binaries and **Zewo** dependencies.
 
-### Install Swift
+### OS X
 
- **Zewo 0.2** requires February 8, 2016 Swift Development Snapshot.
+#### Install Xcode
 
-#### OS X
-
-Download and install Xcode 7.3 or greater.
+Download and install **Xcode 7.3** or greater.
 
 - [Xcode Download](https://developer.apple.com/xcode/download/)
 
-Download the Swift Development Snapshot and optionally the Debugging Symbols.
+#### Install Swift
+
+**Zewo 0.2** requires February 8, 2016 **Swift Development Snapshot**.
 
 - [Swift Development Snapshot](https://swift.org/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a-osx.pkg)
 - [Debugging Symbols (Optional)](https://swift.org/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a-osx-symbols.pkg)
 
-After installing add the swift toolchain to your path.
+After installing add the swift toolchain to your path, so you can build swift from the command line.
 
 ```sh
 export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:"${PATH}"
 ```
 
-If you're using **Xcode** you can choose the appropriate toolchain from `Preferences > Componentes > Toolchains`.
+On **Xcode** you can choose the appropriate toolchain from `Preferences > Componentes > Toolchains`.
 
-#### Linux
-
-On Linux you have to install swift dependencies.
-
-```sh
-sudo apt-get install clang libicu-dev
-```
-
-Download the Swift Development Snapshot
-
-##### Ubuntu 15.10
-
-- [Swift Development Snapshot](https://swift.org/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a-ubuntu15.10.tar.gz)
-
-##### Ubuntu 14.04
-
- - [Swift Development Snapshot](https://swift.org/builds/development/ubuntu1404/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a-ubuntu14.04.tar.gz)
-
-After the download extract the archive. This creates a `usr/` directory in the location of the archive.
-
-```sh
-tar xzf swift-<VERSION>-<PLATFORM>.tar.gz
-```
-
-Add the Swift toolchain to your path.
-
-```sh
-export PATH=/path/to/usr/bin:"${PATH}"
-```
-
-### Install Zewo
+#### Install Zewo
 
 After installing Swift we need to install Zewo's dependencies.
 
-#### OS X
 ```sh
 brew tap zewo/tap
 brew install zewo
 ```
 
-#### Linux
-```sh
-echo "deb [trusted=yes] http://apt.zewo.io/deb ./" | sudo tee --append /etc/apt/sources.list
-sudo apt-get update
-sudo apt-get install zewo
-```
 
 This will install our current dependencies:
 
@@ -82,6 +45,23 @@ This will install our current dependencies:
 - [http_parser](https://github.com/Zewo/http_parser)
 - [uri_parser](https://github.com/Zewo/uri_parser)
 - [openssl](https://www.openssl.org/)
+
+
+### Linux
+
+On **Linux** we provide a shell script that automates the whole installation process.
+
+#### Ubuntu 15.10
+
+```sh
+wget https://raw.github.com/Zewo/Zewo/master/Scripts/install-zewo0.2.3-ubuntu15.10.sh -O - | sh
+```
+
+#### Ubuntu 14.04
+
+```sh
+wget https://raw.github.com/Zewo/Zewo/master/Scripts/install-zewo0.2.3-ubuntu14.04.sh -O - | sh
+```
 
 ## Hello World Web App
 
