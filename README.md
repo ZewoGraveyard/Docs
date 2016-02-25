@@ -147,7 +147,8 @@ let package = Package(
     name: "hello",
     dependencies: [
         .Package(url: "https://github.com/Zewo/HTTPServer.git", majorVersion: 0, minor: 2),
-        .Package(url: "https://github.com/Zewo/Router.git", majorVersion: 0, minor: 2)
+        .Package(url: "https://github.com/Zewo/Router.git", majorVersion: 0, minor: 2),
+        .Package(url: "https://github.com/Zewo/LogMiddleware.git", majorVersion: 0, minor: 2)
     ]
 )
 ```
@@ -159,6 +160,10 @@ Open `main.swift` and make it look like this:
 ```swift
 import HTTPServer
 import Router
+import LogMiddleware
+
+let log = Log()
+let logger = LogMiddleware(log: log)
 
 let router = Router { route in
     route.get("/hello") { _ in
@@ -166,10 +171,14 @@ let router = Router { route in
     }
 }
 
-try Server(responder: router).start()
+try Server(middleware: logger, responder: router).start()
 ```
 
-This will create an HTTP server and router which will route `/hello` to a responder that responds with `"hello world"`.
+This code:
+
+- Creates an HTTP server that listens on port `8080` by default.
+- Configures a router which will route `/hello` to a responder that responds with `"hello world"`.
+- Mounts a middleware on the server that will log every request/response pair to the standard error stream (stderr) by default.
 
 ### Build and run
 
