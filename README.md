@@ -27,18 +27,18 @@ After installing add the swift toolchain to your path.
 export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:"${PATH}"
 ```
 
-If you're using **Xcode** you can choose the appropriate toolchain from `Preferences > Componentes > Toolchains`. 
- 
-#### Linux 
- 
+If you're using **Xcode** you can choose the appropriate toolchain from `Preferences > Componentes > Toolchains`.
+
+#### Linux
+
 On Linux you have to install swift dependencies.
 
 ```sh
 sudo apt-get install clang libicu-dev
-``` 
+```
 
 Download the Swift Development Snapshot
- 
+
 ##### Ubuntu 15.10
 
 - [Swift Development Snapshot](https://swift.org/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a-ubuntu15.10.tar.gz)
@@ -160,162 +160,9 @@ After it compiles, run it.
 
 Now open your favorite browser and go to `localhost:8080/hello`. You should see `hello world` in your browser's window. 😊
 
-## Using Xcode for development
+## Next steps
 
-Using Xcode for development can dramatically improve your productivity. For this reason we developed a tool called [zewo-dev](https://github.com/Zewo/zewo-dev) to helps us.
+Now that you now how to do your stuff mannualy you can make your life easier.
 
-### Create App's Xcode project
-
-First, let's configure an Xcode project for you app. Create a directory for Xcode in your app's root directory.
-
-```sh
-mkdir Xcode && cd Xcode
-```
- 
-Install [Alcatraz](https://github.com/supermarin/Alcatraz) if you haven't already.
-
-```sh
-curl -fsSL https://raw.github.com/alcatraz/Alcatraz/master/Scripts/install.sh | sh
-```
-
-Look for **Swift Command Line Application** under Templates in Alcatraz and install it. Restart Xcode and go to `File > New > Projects` and choose **Swift Command Line Application**. Save it on the `Xcode` directory you just created.
-
-Remove the `main.swift` file that was generated and add the `Sources` directory from your app's root directory.
-
-### Install zewo-dev
-
-This tool will clone all repos from Zewo and generate Xcode projects for them.
-
-```sh
-gem install zewo-dev
-```
-
-
-Inside the Xcode directory create a directory for Zewo's Xcode projects.
-
-```sh
-mkdir Zewo && cd Zewo
-```
-
-Pull the repos and generate Xcode projects.
-
-```sh
-zewodev init && zewodev make_projects
-```
-
-### Add Zewo subprojects
-
-With your app's Xcode project opened, drag and drop the required Xcode projects from Zewo to your project. In our example we should bring `HTTPServer.xcodeproj` and `Router.xcodeproj`.
-
-Go to your app's target `Build Phases > Target Dependencies` and add `HTTPServer` and `Router` frameworks.
-
-Now build and run as usual. After this you can open your favorite browser and go to `localhost:8080/hello`. You should see `hello world` again, but now running from Xcode. 😎
-
-## Developing with Docker
-
-Docker is a set of tools that allows you to package an application with all of its dependencies into a standardized unit.
-
-### Install Docker
-
-#### OS X
-
-Download and install the **Docker Toolbox**.
-
-- [Docker Toolbox](https://www.docker.com/products/docker-toolbox)
-
-Open `Docker Quickstart Terminal`. It will run a bunch of scripts and in the end you'll have something like this.
-
-```sh
-
-                        ##         .
-                  ## ## ##        ==
-               ## ## ## ## ##    ===
-           /"""""""""""""""""\___/ ===
-      ~~~ {~~ ~~~~ ~~~ ~~~~ ~~~ ~ /  ===- ~~~
-           \______ o           __/
-             \    \         __/
-              \____\_______/
-
-
-docker is configured to use the default machine with IP 192.168.99.100
-For help getting started, check out the docs at https://docs.docker.com
-```
-
-Notice the IP in the output (in our case `192.168.99.100`). This is very important for a future step. Now, check if everything is working by running.
-
-```sh
-docker run hello-world
-```
-
-If no errors occurs, we're good to go.
-
-#### Linux
-
-Get the latest docker package.
-
-```sh
-curl -fsSL https://get.docker.com/ | sh
-```
-
-Add your user to the `docker` group.
-
-```sh
-sudo usermod -aG docker <your user>
-```
-
-Log out, log back in and check if everything is working.
-
-```sh
-docker run hello-world
-```
-
-If no errors occurs, we're good to go.
-
-### Create a Dockerfile
-
-On the root of you app's project create a `Dockerfile`. `APP_NAME` should be the name of your app in your `Package.swift` file. In our case it's `hello`.
-
-```
-FROM zewo/docker:0.2.1
-
-ENV APP_NAME=hello
-
-WORKDIR /$APP_NAME/
-
-ADD ./Package.swift /$APP_NAME/
-ADD ./Sources /$APP_NAME/Sources
-
-RUN swift build -c release
-
-EXPOSE 8080
-
-CMD .build/release/$APP_NAME
-```
-
-### Build a Docker image for your app
-
-Build the Docker Image.
-
-```sh
-docker build -t <your username>/hello .
-```
-
-This command can take a while the first time, but next times it will run faster. This command downloads and installs all dependencies for the app and then builds the app itself in your container.
-
-### Run it
-
-Run your app inside your container.
-
-```sh
-docker run -p 8080:8080 <your username>/myapp
-```
-
-#### OS X
-
-On OS X your container lives inside a virtual machine which was configured when you ran `Docker Quickstart Terminal`. This virtual machine can be accessed through the IP that was printed with the docker whale. In our case it was `192.168.99.100`.
-
-Open your favorite browser and go to `<virtual machine ip>:8080/hello`. You should see `hello world` once again, but this time from your docker container. 😛
-
-#### Linux
-
-Open your favorite browser and go to `localhost:8080/hello`. You should see `hello world` once again, but this time from your docker container. 😝 
+- [Developing with Xcode](./Xcode.md)
+- [Developing with Docker](./Docker.md)
