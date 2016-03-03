@@ -51,8 +51,8 @@ zewodev init && zewodev make_projects
 
 ### Add Zewo subprojects
 
-With your app's Xcode project opened, drag and drop the required Xcode projects from Zewo to your project. In our example we should bring `HTTPServer.xcodeproj` and `Router.xcodeproj`.
+With your app's Xcode project opened, drag and drop the required Xcode projects from Zewo to your project. In our example we should bring `HTTPServer.xcodeproj`, `Router.xcodeproj` and `LogMiddleware.xcodeproj`.
 
-Go to your app's target `Build Phases > Target Dependencies` and add `HTTPServer` and `Router` frameworks.
+Go to your app's target `Build Phases > Target Dependencies` and add `HTTPServer`, `Router` and `LogMiddleware` frameworks.
 
 Now build and run as usual. After this you can open your favorite browser and go to `localhost:8080/hello`. You should see `hello world` again, but now running from Xcode. 😎
