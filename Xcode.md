@@ -26,6 +26,8 @@ Restart Xcode and go to `File > New > Projects` and choose **Swift Command Line 
 
 Remove the `main.swift` file that was generated and add the `Sources` directory from your app's root directory.
 
+![New Project](https://raw.githubusercontent.com/Zewo/Docs/master/Images/HelloMain.png)
+
 ### Install zewo-dev
 
 This tool will clone all repos from Zewo and generate Xcode projects for them.
