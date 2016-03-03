@@ -57,6 +57,6 @@ With your app's Xcode project opened, drag and drop the required Xcode projects 
 
 Go to your app's target `Build Phases > Target Dependencies` and add `HTTPServer`, `Router` and `LogMiddleware` frameworks.
 
-![New Project](https://raw.githubusercontent.com/Zewo/Docs/master/Images/AddBuildPhaseDependencies.png)
+![New Project](https://raw.githubusercontent.com/Zewo/Docs/master/Images/AddBuildPhaseDependencies.gif)
 
 Now build and run as usual. After this you can open your favorite browser and go to `localhost:8080/hello`. You should see `hello world` again, but now running from Xcode. 😎
