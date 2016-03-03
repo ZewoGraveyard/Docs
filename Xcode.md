@@ -16,7 +16,13 @@ Install [Alcatraz](https://github.com/supermarin/Alcatraz) if you haven't alread
 curl -fsSL https://raw.github.com/alcatraz/Alcatraz/master/Scripts/install.sh | sh
 ```
 
-Look for **Swift Command Line Application** under Templates in Alcatraz and install it. Restart Xcode and go to `File > New > Projects` and choose **Swift Command Line Application**. Save the project on the `Xcode` directory you just created.
+Look for **Swift Command Line Application** under Templates in Alcatraz and install it.
+
+![New Project](https://raw.githubusercontent.com/Zewo/Docs/master/Images/SwiftCommandLineApplicationAlcatraz.png)
+
+Restart Xcode and go to `File > New > Projects` and choose **Swift Command Line Application**. Save the project on the `Xcode` directory you just created.
+
+![New Project](https://raw.githubusercontent.com/Zewo/Docs/master/Images/SwiftCommandLineApplicationProject.png)
 
 Remove the `main.swift` file that was generated and add the `Sources` directory from your app's root directory.
 
