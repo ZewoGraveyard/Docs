@@ -60,7 +60,7 @@ If no errors occurs, we're good to go.
 
 ### Create a Dockerfile
 
-On the root of you app's project create a `Dockerfile`. `APP_NAME` should be the name of your app in your `Package.swift` file. In our case it's `hello`.
+On the root of you app's project create a file called `Dockerfile`. `APP_NAME` should be the name of your app in your `Package.swift` file. In our case it's `hello`.
 
 ```
 FROM zewo/docker:0.2.1
