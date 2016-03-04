@@ -24,7 +24,7 @@ Download and install **Xcode 7.3** or greater.
 After installing add the swift toolchain to your path, so you can build swift from the command line.
 
 ```sh
-export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:"${PATH}"
+export PATH=/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a.xctoolchain//usr/bin:"${PATH}"
 ```
 
 On **Xcode** you can choose the appropriate toolchain from `Preferences > Componentes > Toolchains`.
