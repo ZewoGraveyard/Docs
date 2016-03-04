@@ -34,8 +34,7 @@ On **Xcode** you can choose the appropriate toolchain from `Preferences > Compon
 After installing Swift we need to install Zewo's dependencies.
 
 ```sh
-brew tap zewo/tap
-brew install zewo
+brew install zewo/tap/zewo
 ```
 
 
