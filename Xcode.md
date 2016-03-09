@@ -20,7 +20,17 @@ Look for **Swift Command Line Application** under Templates in Alcatraz and inst
 
 ![New Project](https://raw.githubusercontent.com/Zewo/Docs/master/Images/SwiftCommandLineApplicationAlcatraz.png)
 
-Restart Xcode and go to `File > New > Projects` and choose **Swift Command Line Application**. Save the project on the `Xcode` directory you just created.
+##### Configuring Xcode toolchain
+You can use any version of Xcode, but you need to launch it with the correct toolchain.
+
+In Xcode 7.3 beta, you can easily switch between toolchains with `Preferences > Components > Toolchains`.
+
+If you're using Xcode 7.2, you have to launch Xcode from the command line.
+```sh
+xcrun launch-with-toolchain /Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a.xctoolchain/
+```
+
+Once you have restarted Xcode, go to `File > New > Projects` and choose **Swift Command Line Application**. Save the project on the `Xcode` directory you just created.
 
 ![New Project](https://raw.githubusercontent.com/Zewo/Docs/master/Images/SwiftCommandLineApplicationProject.png)
 
