@@ -1,6 +1,12 @@
 {
     "plugins": [
-        "scripts"
+      "scripts"
     ],
-    "pluginsConfig": {}
+    "pluginsConfig": {
+      "scripts": {
+        "files": [
+          "./mouseflow.js"
+        ]
+       }
+    }
 }
