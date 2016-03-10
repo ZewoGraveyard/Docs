@@ -4,9 +4,7 @@
     ],
     "pluginsConfig": {
       "scripts": {
-        "files": [
-          "./mouseflow.js"
-        ]
+        "files": []
        }
     }
 }
