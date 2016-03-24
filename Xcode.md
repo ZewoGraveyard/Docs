@@ -21,9 +21,9 @@ Look for **Swift Command Line Application** under Templates in Alcatraz and inst
 ![New Project](https://raw.githubusercontent.com/Zewo/Docs/master/Images/SwiftCommandLineApplicationAlcatraz.png)
 
 ##### Configuring Xcode toolchain
-You can use any version of Xcode, but you need to launch it with the correct toolchain.
+You can use any version of Xcode, but you need to launch it with the correct toolchain. Right now it's `swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a`.
 
-In Xcode 7.3 beta, you can easily switch between toolchains with `Preferences > Components > Toolchains`.
+In Xcode 7.3, you can easily switch between toolchains with `Preferences > Components > Toolchains`.
 
 If you're using Xcode 7.2, you have to launch Xcode from the command line.
 ```sh
@@ -53,10 +53,16 @@ Inside the Xcode directory create a directory for Zewo's Xcode projects.
 mkdir Zewo && cd Zewo
 ```
 
-Pull the repos and generate Xcode projects.
+Pull the repos and generate Xcode projects. We're using `0.2` and `0.3` versions of Zewo libraries because they work with Swift `DEVELOPMENT-SNAPSHOT-2016-02-08-a` version.
 
 ```sh
-zewodev init && zewodev make_projects
+zewodev init && zewodev checkout --tag 0.2 && zewodev checkout --tag 0.3 && zewodev make_projects
+```
+
+Because we're using `0.3` versions of Zewo libraries, we also need to link `http_parser.h` to the expected path. This step is not required for `0.4` versions.
+
+```sh
+mkdir /usr/local/include/http_parser && ln -s /usr/local/include/http_parser.h /usr/local/include/http_parser/http_parser.h
 ```
 
 ### Add Zewo subprojects
