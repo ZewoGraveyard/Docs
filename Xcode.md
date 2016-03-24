@@ -21,9 +21,9 @@ Look for **Swift Command Line Application** under Templates in Alcatraz and inst
 ![New Project](https://raw.githubusercontent.com/Zewo/Docs/master/Images/SwiftCommandLineApplicationAlcatraz.png)
 
 ##### Configuring Xcode toolchain
-You can use any version of Xcode, but you need to launch it with the correct toolchain.
+You can use any version of Xcode, but you need to launch it with the correct toolchain. Right now it's `swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a`.
 
-In Xcode 7.3 beta, you can easily switch between toolchains with `Preferences > Components > Toolchains`.
+In Xcode 7.3, you can easily switch between toolchains with `Preferences > Components > Toolchains`.
 
 If you're using Xcode 7.2, you have to launch Xcode from the command line.
 ```sh
@@ -46,17 +46,16 @@ This tool will clone all repos from Zewo and generate Xcode projects for them.
 gem install zewo-dev
 ```
 
-
 Inside the Xcode directory create a directory for Zewo's Xcode projects.
 
 ```sh
 mkdir Zewo && cd Zewo
 ```
 
-Pull the repos and generate Xcode projects.
+Pull the repos and generate Xcode projects. We're using `0.2` and `0.3` versions of Zewo libraries because they work with Swift `DEVELOPMENT-SNAPSHOT-2016-02-08-a` version.
 
 ```sh
-zewodev init && zewodev make_projects
+zewodev init && zewodev checkout --tag 0.2 && zewodev checkout --tag 0.3 && zewodev make_projects
 ```
 
 ### Add Zewo subprojects
@@ -70,3 +69,11 @@ Go to your app's target `Build Phases > Target Dependencies` and add `HTTPServer
 ![New Project](https://raw.githubusercontent.com/Zewo/Docs/master/Images/AddBuildPhaseDependencies.gif)
 
 Now build and run as usual. After this you can open your favorite browser and go to `localhost:8080/hello`. You should see `hello world` again, but now running from Xcode. 😎
+
+### Troubleshooting
+
+If build fails because Xcode cannot find `http_parser.h` in path `/usr/local/include/http_parser/http_parser.h`, it means that you've already installed http-parser from source or from standalone homebrew formula. To solve the problem, you need to add link:
+
+```sh
+brew link --overwrite http_parser
+```
