@@ -46,7 +46,6 @@ This tool will clone all repos from Zewo and generate Xcode projects for them.
 gem install zewo-dev
 ```
 
-
 Inside the Xcode directory create a directory for Zewo's Xcode projects.
 
 ```sh
@@ -57,12 +56,6 @@ Pull the repos and generate Xcode projects. We're using `0.2` and `0.3` versions
 
 ```sh
 zewodev init && zewodev checkout --tag 0.2 && zewodev checkout --tag 0.3 && zewodev make_projects
-```
-
-Because we're using `0.3` versions of Zewo libraries, we also need to link `http_parser.h` to the expected path. This step is not required for `0.4` versions.
-
-```sh
-mkdir /usr/local/include/http_parser && ln -s /usr/local/include/http_parser.h /usr/local/include/http_parser/http_parser.h
 ```
 
 ### Add Zewo subprojects
@@ -76,3 +69,11 @@ Go to your app's target `Build Phases > Target Dependencies` and add `HTTPServer
 ![New Project](https://raw.githubusercontent.com/Zewo/Docs/master/Images/AddBuildPhaseDependencies.gif)
 
 Now build and run as usual. After this you can open your favorite browser and go to `localhost:8080/hello`. You should see `hello world` again, but now running from Xcode. 😎
+
+### Troubleshooting
+
+If build fails because Xcode cannot find `http_parser.h` in path `/usr/local/include/http_parser/http_parser.h`, it means that you've already installed http-parser from source or from standalone homebrew formula. To solve the problem, you need to add link:
+
+```sh
+brew link --overwrite http_parser
+```
