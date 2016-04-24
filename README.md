@@ -189,7 +189,7 @@ This command will create the basic structure for our app.
 └── Tests
 ```
 
-Open `Package.swift` with your favorite editor and add `HTTPServer`, `Router` and `LogMiddleware` as dependencies.
+Open `Package.swift` with your favorite editor and add `HTTPServer` and `Router` as dependencies.
 
 ```swift
 import PackageDescription
