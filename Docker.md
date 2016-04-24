@@ -63,7 +63,7 @@ If no errors occurs, we're good to go.
 On the root of you app's project create a file called `Dockerfile`. `APP_NAME` should be the name of your app in your `Package.swift` file. In our case it's `hello`.
 
 ```
-FROM zewo/docker:0.2.1
+FROM zewo/swiftdocker:0.5.0
 
 ENV APP_NAME=hello
 
@@ -72,7 +72,7 @@ WORKDIR /$APP_NAME/
 ADD ./Package.swift /$APP_NAME/
 ADD ./Sources /$APP_NAME/Sources
 
-RUN swift build -c release
+RUN swift build --configuration release
 
 EXPOSE 8080
 
