@@ -1,7 +1,6 @@
 # Summary
 
 * [Getting started](README.md)
- * [Developing with Xcode](Xcode.md)
- * [Developing with Docker](Docker.md)
+ * [Deploying with Docker](Docker.md)
+ * [Reverse proxy with Nginx](Nginx.md)
 * [HTTP](HTTP.md)
-

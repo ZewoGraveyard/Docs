@@ -115,21 +115,7 @@ echo 'if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi' >> ~/.z
 echo 'status --is-interactive; and . (swiftenv init -|psub)' >> ~/.config/fish/config.fish
 ```
 
-### Install Zewo
-
-This brew formula installs all **Zewo** dependencies.
-
-```sh
-brew install zewo/tap/zewo
-```
-
 ## Linux
-
-### Install Clang and ICU
-
-```sh
-sudo apt-get install clang libicu-dev
-```
 
 ### Install Swiftenv
 
@@ -168,14 +154,6 @@ echo 'status --is-interactive; and . (swiftenv init -|psub)' >> ~/.config/fish/c
 
 Restart your shell so the changes take effect.
 
-### Install Zewo
-
-```sh
-echo "deb [trusted=yes] http://apt.zewo.io/deb ./" | sudo tee --append /etc/apt/sources.list
-sudo apt-get update
-sudo apt-get install zewo
-```
-
 ## Hello World Web App
 
 To showcase what **Zewo** can do we'll create a hello world web app.
@@ -188,11 +166,11 @@ First we need to create a directory for our app.
 mkdir hello && cd hello
 ```
 
-Then we install Swift Development Snapshot from **February 8, 2016**.
+Then we install Swift Development Snapshot from **April 12, 2016**.
 
 ```sh
-swiftenv install DEVELOPMENT-SNAPSHOT-2016-02-08-a
-swiftenv local DEVELOPMENT-SNAPSHOT-2016-02-08-a
+swiftenv install DEVELOPMENT-SNAPSHOT-2016-04-12-a
+swiftenv local DEVELOPMENT-SNAPSHOT-2016-04-12-a
 ```
 
 Now we initialize the project with Swift Package Manager (**SPM**).
@@ -211,7 +189,7 @@ This command will create the basic structure for our app.
 └── Tests
 ```
 
-Open `Package.swift` with your favorite editor and add `HTTPServer`, `Router` and `LogMiddleware` as dependencies.
+Open `Package.swift` with your favorite editor and add `HTTPServer` and `Router` as dependencies.
 
 ```swift
 import PackageDescription
@@ -219,9 +197,8 @@ import PackageDescription
 let package = Package(
     name: "hello",
     dependencies: [
-        .Package(url: "https://github.com/Zewo/HTTPServer.git", majorVersion: 0, minor: 3),
-        .Package(url: "https://github.com/Zewo/Router.git", majorVersion: 0, minor: 3),
-        .Package(url: "https://github.com/Zewo/LogMiddleware.git", majorVersion: 0, minor: 3)
+        .Package(url: "https://github.com/Zewo/HTTPServer.git", majorVersion: 0, minor: 5),
+        .Package(url: "https://github.com/Zewo/Router.git", majorVersion: 0, minor: 5)
     ]
 )
 ```
@@ -233,10 +210,6 @@ Open `main.swift` and make it look like this:
 ```swift
 import HTTPServer
 import Router
-import LogMiddleware
-
-let log = Log()
-let logger = LogMiddleware(log: log)
 
 let router = Router { route in
     route.get("/hello") { _ in
@@ -244,14 +217,13 @@ let router = Router { route in
     }
 }
 
-try Server(middleware: logger, responder: router).start()
+try Server(responder: router).start()
 ```
 
 This code:
 
 - Creates an HTTP server that listens on port `8080` by default.
 - Configures a router which will route `/hello` to a responder that responds with `"hello world"`.
-- Mounts a logger middleware on the server that will log every request/response pair to the standard error stream (stderr) by default.
 
 ### Build and run
 
@@ -269,9 +241,16 @@ After it compiles, run it.
 
 Now open your favorite browser and go to `localhost:8080/hello`. You should see `hello world` in your browser's window. 😊
 
+## Xcode
+
+Developing in Xcode can be a massive productivity boost. To generate the Xcode projects for your app, simply run:
+
+```sh
+swift build -X
+```
+
 ## Next steps
 
-Now that you now how to do your stuff mannualy you can make your life easier.
+Now that you now how to do your stuff manually you can make your life easier.
 
-- [Developing with Xcode](./Xcode.md)
 - [Developing with Docker](./Docker.md)
