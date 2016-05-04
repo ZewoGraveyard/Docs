@@ -40,8 +40,8 @@ public typealias Headers = [HeaderName: HeaderValue]
 
 #### Accessing raw headers
 
-The `HeaderName` type is simply a wrapper for a case insensitive key. This means you can subscript  the `headers` property without worrying if the header name is capitalized or lowercased, etc. 
- 
+The `HeaderName` type is simply a wrapper for a case insensitive key. This means you can subscript  the `headers` property without worrying if the header name is capitalized or lowercased, etc.
+
 ```swift
 request.headers["Content-Type"] = "application/json"
 if let contentType = request.headers["content-type"] {
@@ -52,7 +52,7 @@ if let contentType = request.headers["content-type"] {
 `contentType` will receive the value `"application/json"`.
 
 #### Accessing `headers` safely
- 
+
 The preferred way to access values from `headers` is through type-safe computed properties defined in extensions. For example, `contentType` is a computed property shared by requests and responses that provides a type-safe wrapper for media types.
 
 ```swift
@@ -178,14 +178,14 @@ if let user = request.user {
 
 ```swift
 public struct Request: MessageType {
-    public typealias Upgrade = (Response, StreamType) throws -> Void
+    public typealias DidUpgrade = (Response, StreamType) throws -> Void
     public var method: Method
     public var uri: URI
     public var version: Version
     public var headers: Headers
     public var cookies: Cookies
     public var body: Body
-    public var upgrade: Upgrade?
+    public var didUpgrade: DidUpgrade?
     public var storage: Storage = [:]
 }
 ```
@@ -196,7 +196,7 @@ Besides the properties required by `MessageType`, `Request` has the `Method` and
 GET / HTTP/1.1
 ```
 
-The `Upgrade` function is used to upgrade the request to another protocol (like [`WebSocket`](https://github.com/Zewo/Websocket)) in an HTTP client.
+The `DidUpgrade` function is used to upgrade the request to another protocol (like [`WebSocket`](https://github.com/Zewo/Websocket)) in an HTTP client.
 
 ### Creating a `Request`
 
@@ -246,7 +246,7 @@ let fileStream = FileStream(file: file)
 let request = try Request(method: .POST, uri: "/hello", body: fileStream)
 ```
 
-Sometimes you want to upgrade your request to another protocol like [`WebSocket`](https://github.com/Zewo/Websocket). You can take full control of the transport stream after the `Response` if you provide an `Upgrade` function.
+Sometimes you want to upgrade your request to another protocol like [`WebSocket`](https://github.com/Zewo/Websocket). You can take full control of the transport stream after the `Response` if you provide an `DidUpgrade` function.
 
 ```swift
 let request = Request(method: .GET, uri: "/") { response, stream in
@@ -262,13 +262,13 @@ let request = Request(method: .GET, uri: "/") { response, stream in
 
 ```swift
 public struct Response: MessageType {
-    public typealias Upgrade = (Request, StreamType) throws -> Void
+    public typealias DidUpgrade = (Request, StreamType) throws -> Void
     public var status: Status
     public var version: Version
     public var headers: Headers
     public var cookies: Cookies
     public var body: Body
-    public var upgrade: Upgrade?
+    public var didUpgrade: DidUpgrade?
     public var storage: Storage = [:]
 }
 ```
@@ -279,4 +279,4 @@ Besides the properties required by `MessageType`, `Response` has the `Status` pr
 HTTP/1.1 200 OK
 ```
 
-The `Upgrade` function is used to upgrade the response to another protocol (like [`WebSocket`](https://github.com/Zewo/Websocket)) in an HTTP server.
+The `DidUpgrade` function is used to didUpgrade the response to another protocol (like [`WebSocket`](https://github.com/Zewo/Websocket)) in an HTTP server.
