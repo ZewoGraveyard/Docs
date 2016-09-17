@@ -1,164 +1,20 @@
 # Getting started
 
-**Zewo** is a set of libraries for server side development. With **Zewo** you can write your web app, REST API, command line tool, database driver, etc. Our goal is to create an ecosystem around the modules and tools we provide so you can focus on developing your application or library, instead of doing everything from scratch.
+## Install Swiftenv
 
-Currently, we have around 50+ packages. This list grows very fast so it might be outdated. To be sure just check our GitHub [organization](https://github.com/Zewo).
+[Swiftenv](https://github.com/kylef/swiftenv) allows you to easily install, and switch between multiple versions of Swift. You can install swiftenv following official [instructions](https://github.com/kylef/swiftenv#installation).
 
-## Zewo Packages
+⚠️ With **homebrew** use `brew install kylef/formulae/swiftenv --HEAD`.
 
-- [Base64](https://github.com/Zewo/Base64)
-- [BasicAuthMiddleware](https://github.com/Zewo/BasicAuthMiddleware)
-- [ChannelStream](https://github.com/Zewo/ChannelStream)
-- [CHTTPParser](https://github.com/Zewo/CHTTPParser)
-- [CLibpq](https://github.com/Zewo/CLibpq)
-- [CLibpq-OSX](https://github.com/Zewo/CLibpq-OSX)
-- [CLibvenice](https://github.com/Zewo/CLibvenice)
-- [CMySQL](https://github.com/Zewo/CMySQL)
-- [CMySQL-OSX](https://github.com/Zewo/CMySQL-OSX)
-- [ContentNegotiationMiddleware](https://github.com/Zewo/ContentNegotiationMiddleware)
-- [COpenSSL](https://github.com/Zewo/COpenSSL)
-- [COpenSSL-OSX](https://github.com/Zewo/COpenSSL-OSX)
-- [CURIParser](https://github.com/Zewo/CURIParser)
-- [CZeroMQ](https://github.com/Zewo/CZeroMQ)
-- [Data](https://github.com/Zewo/Data)
-- [Event](https://github.com/Zewo/Event)
-- [File](https://github.com/Zewo/File)
-- [HTTP](https://github.com/Zewo/HTTP)
-- [http_parser](https://github.com/Zewo/http_parser)
-- [HTTPClient](https://github.com/Zewo/HTTPClient)
-- [HTTPServer](https://github.com/Zewo/HTTPServer)
-- [HTTPFile](https://github.com/Zewo/HTTPFile)
-- [HTTPSClient](https://github.com/Zewo/HTTPSClient)
-- [HTTPSServer](https://github.com/Zewo/HTTPSServer)
-- [InterchangeData](https://github.com/Zewo/InterchangeData)
-- [IP](https://github.com/Zewo/IP)
-- [JSON](https://github.com/Zewo/JSON)
-- [JSONMediaType](https://github.com/Zewo/JSONMediaType)
-- [libvenice](https://github.com/Zewo/libvenice)
-- [Log](https://github.com/Zewo/Log)
-- [LogMiddleware](https://github.com/Zewo/LogMiddleware)
-- [MediaType](https://github.com/Zewo/MediaType)
-- [Mustache](https://github.com/Zewo/Mustache)
-- [MySQL](https://github.com/Zewo/MySQL)
-- [OpenSSL](https://github.com/Zewo/OpenSSL)
-- [POSIXRegex](https://github.com/Zewo/POSIXRegex)
-- [PostgreSQL](https://github.com/Zewo/PostgreSQL)
-- [RegexRouteMatcher](https://github.com/Zewo/RegexRouteMatcher)
-- [Router](https://github.com/Zewo/Router)
-- [Sideburns](https://github.com/Zewo/Sideburns)
-- [SQL](https://github.com/Zewo/SQL)
-- [Stream](https://github.com/Zewo/Stream)
-- [String](https://github.com/Zewo/String)
-- [System](https://github.com/Zewo/System)
-- [TCP](https://github.com/Zewo/TCP)
-- [TCPSSL](https://github.com/Zewo/TCPSSL)
-- [TrieRouteMatcher](https://github.com/Zewo/TrieRouteMatcher)
-- [UDP](https://github.com/Zewo/UDP)
-- [URI](https://github.com/Zewo/URI)
-- [uri_parser](https://github.com/Zewo/uri_parser)
-- [URLEncodedForm](https://github.com/Zewo/URLEncodedForm)
-- [Venice](https://github.com/Zewo/Venice)
-- [WebSocket](https://github.com/Zewo/WebSocket)
-- [Zewo](https://github.com/Zewo/Zewo)
+## Install Swift 3.0 Release
 
-## External Packages
-
-- [Swift-Redis](https://github.com/rabc/Swift-Redis/)
-- [MiniRouter](https://github.com/paulofaria/MiniRouter)
-
-## Installation
-
-Before we start we need to install some tools and dependencies. If you already installed just skip them.
-
-## OS X
-
-### Install Xcode 7.3+
-
-[Xcode](https://developer.apple.com/xcode/) is apple's software development IDE.
-
-- [Xcode Download](https://developer.apple.com/xcode/download/)
-
-### Install Homebrew
-
-[Homebrew](http://brew.sh/) is a package manager for OS X.
+Once you have it, install the Swift 3.0 Release
 
 ```sh
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+swiftenv install 3.0
 ```
 
-### Install Swiftenv
-
-[Swiftenv](https://github.com/kylef/swiftenv) is a version manager for Swift.
-
-```sh
-brew install kylef/formulae/swiftenv
-```
-
-After installing you need to configure your shell.
-
-**Bash**
-
-```sh
-echo 'if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi' >> ~/.bash_profile
-```
-> On some platforms, you may need to modify ~/.bashrc instead of ~/.bash_profile.
-
-**ZSH**
-
-```sh
-echo 'if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi' >> ~/.zshrc
-```
-
-**Fish**
-
-```sh
-echo 'status --is-interactive; and . (swiftenv init -|psub)' >> ~/.config/fish/config.fish
-```
-
-## Linux
-
-### Install Swiftenv
-
-[Swiftenv](https://github.com/kylef/swiftenv) is a version manager for Swift.
-
-```sh
-git clone https://github.com/kylef/swiftenv.git ~/.swiftenv
-```
-
-After installing you need to configure your shell.
-
-**Bash**
-
-```sh
-echo 'export SWIFTENV_ROOT="$HOME/.swiftenv"' >> ~/.bashrc
-echo 'export PATH="$SWIFTENV_ROOT/bin:$PATH"' >> ~/.bashrc
-echo 'eval "$(swiftenv init -)"' >> ~/.bashrc
-```
-> On some platforms, you may need to modify ~/.bash_profile instead of ~/.bashrc.
-
-**ZSH**
-
-```sh
-echo 'export SWIFTENV_ROOT="$HOME/.swiftenv"' >> ~/.zshenv
-echo 'export PATH="$SWIFTENV_ROOT/bin:$PATH"' >> ~/.zshenv
-echo 'eval "$(swiftenv init -)"' >> ~/.zshenv
-```
-
-**Fish**
-
-```sh
-echo 'setenv SWIFTENV_ROOT "$HOME/.swiftenv"' >> ~/.config/fish/config.fish
-echo 'setenv PATH "$SWIFTENV_ROOT/bin" $PATH' >> ~/.config/fish/config.fish
-echo 'status --is-interactive; and . (swiftenv init -|psub)' >> ~/.config/fish/config.fish
-```
-
-Restart your shell so the changes take effect.
-
-## Hello World Web App
-
-To showcase what **Zewo** can do we'll create a hello world web app.
-
-### Configure your project
+## Create your first Zewo web application
 
 First we need to create a directory for our app.
 
@@ -166,17 +22,11 @@ First we need to create a directory for our app.
 mkdir hello && cd hello
 ```
 
-Then we install Swift Development Snapshot from **April 12, 2016**.
+Now we select Swift 3.0 Release with Swiftenv and initialize the project with the Swift Package Manager (**SwiftPM**).
 
 ```sh
-swiftenv install DEVELOPMENT-SNAPSHOT-2016-04-12-a
-swiftenv local DEVELOPMENT-SNAPSHOT-2016-04-12-a
-```
-
-Now we initialize the project with Swift Package Manager (**SPM**).
-
-```sh
-swift build --init
+swiftenv local 3.0
+swift package init --type executable
 ```
 
 This command will create the basic structure for our app.
@@ -185,11 +35,11 @@ This command will create the basic structure for our app.
 .
 ├── Package.swift
 ├── Sources
-│   └── main.swift
+│   └── main.swift
 └── Tests
 ```
 
-Open `Package.swift` with your favorite editor and add `HTTPServer` and `Router` as dependencies.
+Open `Package.swift` with your favorite editor and add `HTTPServer` as a dependency.
 
 ```swift
 import PackageDescription
@@ -197,36 +47,38 @@ import PackageDescription
 let package = Package(
     name: "hello",
     dependencies: [
-        .Package(url: "https://github.com/Zewo/HTTPServer.git", majorVersion: 0, minor: 5),
-        .Package(url: "https://github.com/Zewo/Router.git", majorVersion: 0, minor: 5)
+        .Package(url: "https://github.com/VeniceX/HTTPServer.git", majorVersion: 0, minor: 13),
     ]
 )
 ```
 
-### Do your magic
+## Do your magic
 
 Open `main.swift` and make it look like this:
 
 ```swift
 import HTTPServer
-import Router
 
-let router = Router { route in
-    route.get("/hello") { _ in
-        return Response(body: "hello world")
+let router = BasicRouter { route in
+    route.get("/hello") { request in
+        return Response(body: "Hello, world!")
     }
 }
 
-try Server(responder: router).start()
+let server = try Server(configuration: ["port": 8080], responder: router)
+try server.start()
 ```
 
 This code:
 
-- Creates an HTTP server that listens on port `8080` by default.
-- Configures a router which will route `/hello` to a responder that responds with `"hello world"`.
+- Imports the `HTTPServer` module
+- Creates a `BasicRouter`
+- Configures a route matching any `Request` with **GET** as the HTTP method and **/hello** as the path.
+- Returns a `Response` with `"Hello, world!"` as the body for requests matching the route.
+- Creates an HTTP server that listens on port `8080`.
+- Starts the server.
 
-### Build and run
-
+## Build and run
 Now let's build the app.
 
 ```sh
@@ -239,18 +91,48 @@ After it compiles, run it.
 .build/debug/hello
 ```
 
-Now open your favorite browser and go to `localhost:8080/hello`. You should see `hello world` in your browser's window. 😊
+![Terminal Server](Images/Terminal-server.png)
+
+Now open your favorite browser and go to [http://localhost:8080/hello](http://localhost:8080/hello). You should see **Hello, world!** in your browser's window. 😊
+
+![Safari Hello](Images/Safari-hello.png)
+
+By default the server will log the requests/responses.
+
+![Terminal Log](Images/Terminal-log.png)
+
+Press `control + c` to stop the server.
 
 ## Xcode
 
-Developing in Xcode can be a massive productivity boost. To generate the Xcode projects for your app, simply run:
+Using an IDE can be a huge boost to productivity. Luckily, **SwiftPM** has Xcode project generation support built in.
+
+To generate your Zewo Xcode project simply run:
 
 ```sh
-swift build -X
+swift package generate-xcodeproj
 ```
 
-## Next steps
+Open your Xcode project by double clicking it on Finder or with:
 
-Now that you now how to do your stuff manually you can make your life easier.
+```sh
+open hello.xcodeproj
+```
 
-- [Developing with Docker](./Docker.md)
+To run the application select the command line application scheme `hello` on Xcode.
+
+![Xcode Scheme](Images/Xcode-scheme.png)
+
+Now click the run button ► or use the shortcut `⌘R`. You should see the server running directly from your Xcode.
+
+![Xcode Console](Images/Xcode-console.png)
+
+You can set breakpoints in your code and debug it as usual.
+
+![Xcode Debug](Images/Xcode-debug.png)
+
+To stop the server just click the stop button ■ or use the shortcut `⌘.`.
+
+## What's next?
+
+Check out our [organization](https://github.com/Zewo) for more. You can also take a look at our [documentation](http://zewo.readme.io). If you have any doubts you can reach us at our [slack](http://slack.zewo.io). We're very active and always ready to help.
