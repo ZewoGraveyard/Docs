@@ -91,15 +91,15 @@ After it compiles, run it.
 .build/debug/hello
 ```
 
-![Terminal Server](Images/Terminal-server.png)
+![Terminal Server](https://github.com/Zewo/Zewo/raw/master/Images/Terminal-server.png)
 
 Now open your favorite browser and go to [http://localhost:8080/hello](http://localhost:8080/hello). You should see **Hello, world!** in your browser's window. 😊
 
-![Safari Hello](Images/Safari-hello.png)
+![Safari Hello](https://github.com/Zewo/Zewo/raw/master/Images/Safari-hello.png)
 
 By default the server will log the requests/responses.
 
-![Terminal Log](Images/Terminal-log.png)
+![Terminal Log](https://github.com/Zewo/Zewo/raw/master/Images/Terminal-log.png)
 
 Press `control + c` to stop the server.
 
@@ -121,15 +121,15 @@ open hello.xcodeproj
 
 To run the application select the command line application scheme `hello` on Xcode.
 
-![Xcode Scheme](Images/Xcode-scheme.png)
+![Xcode Scheme](https://github.com/Zewo/Zewo/raw/master/Images/Xcode-scheme.png)
 
 Now click the run button ► or use the shortcut `⌘R`. You should see the server running directly from your Xcode.
 
-![Xcode Console](Images/Xcode-console.png)
+![Xcode Console](https://github.com/Zewo/Zewo/raw/master/Images/Xcode-console.png)
 
 You can set breakpoints in your code and debug it as usual.
 
-![Xcode Debug](Images/Xcode-debug.png)
+![Xcode Debug](https://github.com/Zewo/Zewo/raw/master/Images/Xcode-debug.png)
 
 To stop the server just click the stop button ■ or use the shortcut `⌘.`.
 
